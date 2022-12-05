@@ -1,0 +1,198 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link href="{% static 'css/sb-admin-2.min.css'%}" rel="stylesheet">
+    <title>Ver productos</title>
+</head>
+<body>
+    <!-- dashboard -->
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'dashboard'%}">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">JMNJEV4</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'dashboard'%}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'verproductos'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Ver Productos</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'buscarproducto'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Buscar Producto</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'verclientes'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Ver Clientes</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'verventas'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Ventas</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'venderproducto'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Vender Producto</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'publicidad'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Publicidad</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="../admin/">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Administracion</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'graficocliente' %}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Grafico Cliente</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'graficoproducto' %}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Grafico Productos</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <a href="{% url 'crearclientes' %}">
+            <button type="button" class="btn btn-info">Crear Clientes</button>
+            </a>
+
+            <hr class="sidebar-divider">
+
+            <a href="{% url 'crearproductos' %}">
+            <button type="button" class="btn btn-secondary">Crear Productos</button>
+            </a>
+
+        </ul>
+
+    <!-- FIN dashboard -->
+
+        <!-- /.card-header -->
+    <div class="card-body">
+        <h1>PRODUCTOS</h1>
+        <table id="example1" class="table table-bordered table-striped">
+         <!--Titulo del detalle-->
+          <thead>
+            <tr>
+                <th>Codigo Barra</th>
+                <th>Codigo Producto</th>
+                <th>Nombre Producto</th>
+                <th>Proovedor</th>
+                <th>Categoria</th>
+                <th>Cantidad por unidad</th>
+                <th>Precio CLP</th>
+                <th>Precio Euro</th>
+                <th>Stock</th>
+            </tr>
+          </thead>
+         <!--Detalles-->
+          <tbody>
+        <!--for para ver los productos en la lista-->
+        {% for producto in productos %}
+            <tr>
+              <td><img src="{% static 'barcode/'%}{{producto.codProducto}}.jpg"></td>
+              <td>{{ producto.codProducto }} </td>
+              <td>{{ producto.Nombre_Producto }} </td>
+              <td>{{ producto.Proovedor }} </td>
+              <td>{{ producto.Categoria }} </td>
+              <td>{{ producto.Cantidad_por_Unidad }}</td>
+              <td>{{ producto.Valor_en_Peso }} </td>
+              <td>{{ producto.Valor_en_Euro }} </td>
+              <td>{{ producto.Stock }} </td>
+            </tr>
+        {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+    </div>
+
+
+
+</body>
+</html>

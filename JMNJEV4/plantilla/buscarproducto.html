@@ -1,0 +1,191 @@
+{% load static %}
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JMNJEV4</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'css/all.min.min.css'%}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin-2.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+
+</head>
+<body>
+
+
+    <!-- dashboard -->
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'dashboard'%}">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">JMNJEV4</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'dashboard'%}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'verproductos'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Ver Productos</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'buscarproducto'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Buscar Producto</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'verclientes'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Ver Clientes</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'verventas'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Ventas</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'venderproducto'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Vender Producto</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'publicidad'%}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Publicidad</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="../admin/">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Administracion</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'graficocliente' %}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Grafico Cliente</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'graficoproducto' %}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Grafico Productos</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <a href="{% url 'crearclientes' %}">
+            <button type="button" class="btn btn-info">Crear Clientes</button>
+            </a>
+
+            <hr class="sidebar-divider">
+
+            <a href="{% url 'crearproductos' %}">
+            <button type="button" class="btn btn-secondary">Crear Productos</button>
+            </a>
+
+        </ul>
+    <!-- FIN dashboard -->
+    <div class="container">
+        <div class="contenedor">
+            <form action="{% url 'productobuscado'%}" method="POST">
+                {% csrf_token %}
+                {% if message %}
+                <div class="alert alert-danger" role="alert">
+                {{ message }}
+                </div>
+                {% endif %}
+                <div class="form-group" style="text-align:center;">
+                  <label for="codigoproducto">Codigo Producto:</label>
+                  <input type="text" class="form-control" id="codigoproducto" name="codigoproducto">
+                </div>
+
+                <div style="text-align:center;">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

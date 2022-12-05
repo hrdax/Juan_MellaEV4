@@ -1,0 +1,14 @@
+.contenedor {
+  position: absolute;
+  display: flex;
+  width: 100vh;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.boleta {
+    background-color: #F2F1F1;
+    border : solid 2px black;
+    border-radius: 10px;
+}
