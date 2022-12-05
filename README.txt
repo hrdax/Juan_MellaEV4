@@ -37,3 +37,7 @@ NO ejecutar más de 1 vez cada creación de los clientes o productos, ya que pod
 para ir al dashboard principal la ruta es
 
 /JMNJEV4/dashboard
+
+Para entrar a administracion se debe crear un superusuario con
+
+python manage.py createsuperuser
