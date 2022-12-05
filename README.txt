@@ -1,3 +1,5 @@
+
+CAMBIAR NOMBRE DE SETTINGSDEFAULT.PY A settings.py
 Configurar settings.py
 
 ingresar usuario y contrasena de postgres
